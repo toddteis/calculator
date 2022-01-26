@@ -11,6 +11,13 @@
 html {
     box-sizing: border-box;
     font-size: 16px;
+    font-family: 'Mukta', sans-serif;
+}
+
+.calculator input {
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 
