@@ -14,6 +14,31 @@ html {
     font-family: 'Mukta', sans-serif;
 }
 
+main {
+    display: grid;
+    grid-template-columns: auto 360px auto;
+    grid-template-rows: 550px;
+    grid-template-areas: 'sdl calc sdr';
+}
+
+.calculator {
+    grid-area: calc;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: auto 65px 65px 65px 65px auto;
+    grid-template-rows: 65px 65px 65px 65px 65px 65px 65px;
+    grid-template-areas: 
+        'auto displ displ displ displ auto'
+        'auto displ displ displ displ auto'
+        'auto 3rd-l 3rd-l 3rd-r 3rd-r auto'
+        'auto 4th-l 4thil 4thir 4th-r auto'
+        'auto 4th-l 4thil 4thir 4th-r auto'
+        'auto 5th-l 5thil 5thir 5th-r auto'
+        'auto 6th-l 6thil 6thir 6th-r auto'
+        'auto 7th-l 7thil 7thir 7th-r auto'
+        ;
+}
+
 .calculator input {
     font-family: 'Mukta', sans-serif;
     font-weight: 400;
