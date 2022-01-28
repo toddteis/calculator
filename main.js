@@ -1,5 +1,12 @@
+const buttons = document.querySelectorAll('input.btn-square');
 
+console.log(buttons);
 
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.id);
+    });
+});
 
 function operate(num1, oper, num2) {
     let result;
