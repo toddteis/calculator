@@ -1,11 +1,17 @@
 const buttons = document.querySelectorAll('input.btn-square');
 const displayMainScreen = document.querySelector('.display-main')
+const displayTopScreen = document.querySelector('.display-top')
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        displayMainScreen.textContent = button.id;
+        controller(button.id)
     });
 });
+
+function controller(para) {
+    displayMainScreen.textContent = para;
+    displayTopScreen.textContent = para;
+}
 
 function operate(num1, oper, num2) {
     let result;
