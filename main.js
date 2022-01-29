@@ -1,10 +1,9 @@
 const buttons = document.querySelectorAll('input.btn-square');
-
-console.log(buttons);
+const displayMainScreen = document.querySelector('.display-main')
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(button.id);
+        displayMainScreen.textContent = button.id;
     });
 });
 

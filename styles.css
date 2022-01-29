@@ -37,7 +37,7 @@ html {
 }
 
 .display-top {grid-area: a;}
-.display-bottom {grid-area: b;}
+.display-main {grid-area: b;}
 .clear {grid-area: c;}
 .delete {grid-area: d;}
 .seven {grid-area: e;}
