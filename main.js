@@ -22,16 +22,22 @@ buttonsOperator.forEach((button) => {
 });
 
 buttonClear.addEventListener('click', () => { controller(buttonClear.id); })
-buttonDelete.addEventListener('click', () => { controller(buttonDelete.id); })
+buttonDelete.addEventListener('click', () => { deleteController(); })
 buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
+
+function deleteController() {
+    let str = displayMainScreen.innerText;
+    str = str.substring(0, str.length -1);
+    displayMainScreen.innerText = str;
+    hasDecimal = (!str.includes('.')) ? false : true;
+}
 
 function operatorController(para) {
     console.log('this is the operatorController');
 }
 
 function mainDisplayController(para) {
-    // check for decimal
     if (para == '.') {
         if ( hasDecimal == false) {
             displayMainScreen.innerText += para;
