@@ -7,6 +7,8 @@ const buttonDecimal = document.querySelector('input.decimal');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
+let hasDecimal = false;
+
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
         mainDisplayController(button.id);
@@ -29,7 +31,16 @@ function operatorController(para) {
 }
 
 function mainDisplayController(para) {
-    displayMainScreen.innerText += para;
+    // check for decimal
+    if (para == '.') {
+        if ( hasDecimal == false) {
+            displayMainScreen.innerText += para;
+            hasDecimal = true;
+        }
+    } else {
+        displayMainScreen.innerText += para;
+    }
+    
 }
 
 function operate(num1, oper, num2) {
