@@ -9,22 +9,26 @@ const displayTopScreen = document.querySelector('.display-top')
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
-        controller(button.id);
+        mainDisplayController(button.id);
     });
 });
 
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', () => {
-        controller(button.id);
+        operatorController(button.id);
     });
 });
 
 buttonClear.addEventListener('click', () => { controller(buttonClear.id); })
 buttonDelete.addEventListener('click', () => { controller(buttonDelete.id); })
 buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
-buttonDecimal.addEventListener('click', () => { controller(buttonDecimal.id); })
+buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
 
-function controller(para) {
+function operatorController(para) {
+    console.log('this is the operatorController');
+}
+
+function mainDisplayController(para) {
     displayMainScreen.innerText += para;
 }
 
