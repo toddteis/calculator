@@ -1,6 +1,3 @@
-const displayMainDefault = 0;
-const displayTopDefault = [1, '+', 2];
-
 const buttonsNumber = document.querySelectorAll('input.number');
 const buttonsOperator = document.querySelectorAll('input.operator');
 const buttonClear = document.querySelector('input.clear');
@@ -10,19 +7,15 @@ const buttonDecimal = document.querySelector('input.decimal');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
-let displayTopInput = displayTopDefault;
-let displayMainInput = displayMainDefault;
-
-
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
-        controller(button.id)
+        controller(button.id);
     });
 });
 
 buttonsOperator.forEach((button) => {
     button.addEventListener('click', () => {
-        controller(button.id)
+        controller(button.id);
     });
 });
 
@@ -32,14 +25,7 @@ buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { controller(buttonDecimal.id); })
 
 function controller(para) {
-
-    // if (Number.isFinite(para)) {
-    //     console.log(`from inside the if statement: ${para}`)
-    // } else {
-    //     console.log(`from inside the else statement: ${para}`)
-    // }
-    displayMainScreen.textContent = para;
-    displayTopScreen.textContent = para;
+    displayMainScreen.innerText += para;
 }
 
 function operate(num1, oper, num2) {
