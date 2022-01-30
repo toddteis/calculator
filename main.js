@@ -1,6 +1,14 @@
+const displayMainDefault = 0;
+const displayTopDefault = [1, '+', 2];
+
 const buttons = document.querySelectorAll('input.btn-square');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
+
+let displayTopInput = displayTopDefault;
+let displayMainInput = displayMainDefault;
+
+console.log(displayMainInput);
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
