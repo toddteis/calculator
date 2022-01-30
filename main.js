@@ -21,10 +21,15 @@ buttonsOperator.forEach((button) => {
     });
 });
 
-buttonClear.addEventListener('click', () => { controller(buttonClear.id); })
+buttonClear.addEventListener('click', () => { clearController(); })
 buttonDelete.addEventListener('click', () => { deleteController(); })
 buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
+
+function clearController() {
+    displayMainScreen.innerText = '';
+    hasDecimal = false;
+}
 
 function deleteController() {
     let str = displayMainScreen.innerText;
