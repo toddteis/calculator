@@ -2,6 +2,7 @@ const buttonsNumber = document.querySelectorAll('input.number');
 const buttonsOperator = document.querySelectorAll('input.operator');
 const buttonClear = document.querySelector('input.clear');
 const buttonDelete = document.querySelector('input.delete');
+const buttonPlusMinus = document.querySelector('input.plus-minus');
 const buttonEqual = document.querySelector('input.equals');
 const buttonDecimal = document.querySelector('input.decimal');
 const displayMainScreen = document.querySelector('.display-main')
@@ -23,6 +24,7 @@ buttonsOperator.forEach((button) => {
 
 buttonClear.addEventListener('click', () => { clearController(); })
 buttonDelete.addEventListener('click', () => { deleteController(); })
+buttonPlusMinus.addEventListener('click', () => { mainDisplayController(buttonPlusMinus.id); })
 buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
 
@@ -47,6 +49,18 @@ function mainDisplayController(para) {
         if ( hasDecimal == false) {
             displayMainScreen.innerText += para;
             hasDecimal = true;
+        }
+    } else if (para =='+/-') {
+        let currentScreenValue = displayMainScreen.innerText;
+        if (currentScreenValue > 0) {
+            let firstChar = currentScreenValue.substring(0,1);
+            if (firstChar == '+') {
+                currentScreenValue = currentScreenValue.substring(1, currentScreenValue.length);
+            }
+            displayMainScreen.innerText = "-" + currentScreenValue;
+        } else {
+            currentScreenValue = currentScreenValue.substring(1, currentScreenValue.length);
+            displayMainScreen.innerText = "+" + currentScreenValue;
         }
     } else {
         displayMainScreen.innerText += para;
