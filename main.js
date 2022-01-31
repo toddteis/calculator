@@ -9,6 +9,7 @@ const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
 let hasDecimal = false;
+let hasOperator = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -28,6 +29,12 @@ buttonPlusMinus.addEventListener('click', () => { mainDisplayController(buttonPl
 buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
 
+function topDisplayController(para) {
+
+    displayTopScreen.innerText = `${displayMainScreen.textContent} ${para}`;
+    console.log('from within topDisplayController')
+}
+
 function clearController() {
     displayMainScreen.innerText = '';
     hasDecimal = false;
@@ -41,7 +48,7 @@ function deleteController() {
 }
 
 function operatorController(para) {
-    console.log('this is the operatorController');
+    topDisplayController(para);
 }
 
 function mainDisplayController(para) {
