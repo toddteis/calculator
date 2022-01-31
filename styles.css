@@ -22,7 +22,7 @@ html {
     grid-template-areas: 
         'sdl a a a a sdr'
         'sdl b b b b sdr'
-        'sdl c c d d sdr'
+        'sdl c c d u sdr'
         'sdl e f g h sdr'
         'sdl i j k l sdr'
         'sdl m n o p sdr'
@@ -40,6 +40,7 @@ html {
 .display-main {grid-area: b;}
 .clear {grid-area: c;}
 .delete {grid-area: d;}
+.plus-minus {grid-area: u;}
 .seven {grid-area: e;}
 .eight {grid-area: f;}
 .nine {grid-area: g;}
