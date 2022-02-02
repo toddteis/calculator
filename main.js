@@ -11,6 +11,7 @@ const displayTopScreen = document.querySelector('.display-top')
 let hasDecimal = false;
 let hasOperator = false;
 let hasBeenCleared = false;
+let hasEqualsBePressed = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -32,6 +33,9 @@ buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDeci
 
 
 function equalsController(para) {
+    if(para = '=') {
+        hasEqualsBePressed = true;
+    }
     let mainStr = displayMainScreen.innerText;
     displayTopScreen.innerText +=  ` ${mainStr} =`;
     let arr = displayTopScreen.innerText.split(' ');
@@ -57,6 +61,7 @@ function clearController() {
     displayTopScreen.innerText = '';
     hasOperator = false;
     hasBeenCleared = false;
+    hasEqualsBePressed = false;
 }
 
 function deleteController() {
@@ -77,8 +82,12 @@ function mainDisplayController(para) {
             displayMainScreen.innerText = '';
             hasBeenCleared = true;
         }
-
     }
+
+    if (hasEqualsBePressed) {
+        clearController();
+    }
+
     if (para == '.') {
         if ( hasDecimal == false) {
             displayMainScreen.innerText += para;
