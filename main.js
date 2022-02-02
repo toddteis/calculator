@@ -10,6 +10,7 @@ const displayTopScreen = document.querySelector('.display-top')
 
 let hasDecimal = false;
 let hasOperator = false;
+let hasBeenCleared = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -38,13 +39,13 @@ function topDisplayController(para) {
         str = str.substring(0, str.length -1);
         displayTopScreen.innerText = str + para;
     }
-
-
 }
 
 function clearController() {
     displayMainScreen.innerText = '';
     hasDecimal = false;
+    displayTopScreen.innerText = '';
+    hasBeenCleared = false;
 }
 
 function deleteController() {
@@ -60,6 +61,13 @@ function operatorController(para) {
 }
 
 function mainDisplayController(para) {
+    if (hasOperator) { 
+        if (!hasBeenCleared) {
+            displayMainScreen.innerText = '';
+            hasBeenCleared = true;
+        }
+
+    }
     if (para == '.') {
         if ( hasDecimal == false) {
             displayMainScreen.innerText += para;
