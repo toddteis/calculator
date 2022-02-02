@@ -30,9 +30,16 @@ buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
 
 function topDisplayController(para) {
+    if(!hasOperator) {
+        displayTopScreen.innerText = `${displayMainScreen.textContent} ${para}`;
+        console.log('from within topDisplayController')
+    } else {
+        let str = displayTopScreen.innerText;
+        str = str.substring(0, str.length -1);
+        displayTopScreen.innerText = str + para;
+    }
 
-    displayTopScreen.innerText = `${displayMainScreen.textContent} ${para}`;
-    console.log('from within topDisplayController')
+
 }
 
 function clearController() {
@@ -49,6 +56,7 @@ function deleteController() {
 
 function operatorController(para) {
     topDisplayController(para);
+    hasOperator = true;
 }
 
 function mainDisplayController(para) {
