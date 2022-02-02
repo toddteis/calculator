@@ -27,8 +27,14 @@ buttonsOperator.forEach((button) => {
 buttonClear.addEventListener('click', () => { clearController(); })
 buttonDelete.addEventListener('click', () => { deleteController(); })
 buttonPlusMinus.addEventListener('click', () => { mainDisplayController(buttonPlusMinus.id); })
-buttonEqual.addEventListener('click', () => { controller(buttonEqual.id); })
+buttonEqual.addEventListener('click', () => { equalsController(buttonEqual.id); })
 buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDecimal.id); })
+
+
+function equalsController(para) {
+    let mainStr = displayMainScreen.innerText;
+    displayTopScreen.innerText +=  ' ' + mainStr + '='
+}
 
 function topDisplayController(para) {
     if(!hasOperator) {
@@ -45,6 +51,7 @@ function clearController() {
     displayMainScreen.innerText = '';
     hasDecimal = false;
     displayTopScreen.innerText = '';
+    hasOperator = false;
     hasBeenCleared = false;
 }
 
