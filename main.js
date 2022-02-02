@@ -33,7 +33,7 @@ buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDeci
 
 function equalsController(para) {
     let mainStr = displayMainScreen.innerText;
-    displayTopScreen.innerText +=  ' ' + mainStr + '='
+    displayTopScreen.innerText +=  ` ${mainStr} =`;
 }
 
 function topDisplayController(para) {
