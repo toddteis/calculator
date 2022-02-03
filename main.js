@@ -33,6 +33,8 @@ buttonDecimal.addEventListener('click', () => { mainDisplayController(buttonDeci
 
 
 function equalsController(para) {
+    // sets a variable that is used in mainDisplayController to know when
+    // to clear the screen for a knew equation.
     if(para = '=') {
         hasEqualsBePressed = true;
     }
@@ -47,7 +49,6 @@ function equalsController(para) {
 function topDisplayController(para) {
     if(!hasOperator) {
         displayTopScreen.innerText = `${displayMainScreen.textContent} ${para}`;
-        console.log('from within topDisplayController')
     } else {
         let str = displayTopScreen.innerText;
         str = str.substring(0, str.length -1);
@@ -72,11 +73,32 @@ function deleteController() {
 }
 
 function operatorController(para) {
-    topDisplayController(para);
-    hasOperator = true;
+    if(!hasOperator) {
+        topDisplayController(para);
+        hasOperator = true;
+    } else {
+        continueEquationController(para);
+    }       
+}
+
+function continueEquationController(para) {
+    //get ans and display it on top and main screens with the new operator.
+    let topStr = displayTopScreen.innerText;
+    let mainStr = displayMainScreen.innerText;
+    displayMainScreen.innerText = '';
+    topStr += ` ${mainStr}`;
+    let arr = topStr.split(' ');
+    num1 = parseFloat(arr[0]);
+    num2 = parseFloat(arr[2]);
+    let ans = operate(num1, arr[1], num2);
+    displayMainScreen.innerText = ans;
+    displayTopScreen.innerText = ans + ' ' + para;
 }
 
 function mainDisplayController(para) {
+    
+    // check to see if hasOperator is true,
+    // if so clear main screen before continuing.
     if (hasOperator) { 
         if (!hasBeenCleared) {
             displayMainScreen.innerText = '';
@@ -84,10 +106,12 @@ function mainDisplayController(para) {
         }
     }
 
+    // clears both screen and resets variables for next equation.
     if (hasEqualsBePressed) {
         clearController();
     }
 
+    // handles decimal, +/- or numbers and then displays them on the main screen.
     if (para == '.') {
         if ( hasDecimal == false) {
             displayMainScreen.innerText += para;
