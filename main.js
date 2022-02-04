@@ -85,7 +85,6 @@ function continueEquationController(para) {
     //get ans and display it on top and main screens with the new operator.
     let topStr = displayTopScreen.innerText;
     let mainStr = displayMainScreen.innerText;
-    displayMainScreen.innerText = '';
     topStr += ` ${mainStr}`;
     let arr = topStr.split(' ');
     num1 = parseFloat(arr[0]);
@@ -93,6 +92,7 @@ function continueEquationController(para) {
     let ans = operate(num1, arr[1], num2);
     displayMainScreen.innerText = ans;
     displayTopScreen.innerText = ans + ' ' + para;
+    hasBeenCleared = false;
 }
 
 function mainDisplayController(para) {
