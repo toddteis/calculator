@@ -90,7 +90,15 @@ function clearController() {
     equationStack = [];
 }
 function deleteController() {
-    console.log("from within deleteController")
+    if (equationStack.length == 1) {
+        let str = equationStack[0];
+        equationStack[0] = str.substring(0, str.length -1);
+        console.log(equationStack)
+    } else if (equationStack.length == 3) {
+        let str = equationStack[2];
+        equationStack[2] = str.substring(0, str.length -1);
+        console.log(equationStack)
+    }
 }
 
 function plusMinusController() {
