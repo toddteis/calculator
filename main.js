@@ -47,6 +47,23 @@ function mainController(para) {
     } else {
         equalsController();
     }
+    displayController();
+}
+
+function displayController() {
+    let numEntries = equationStack.length;
+    if (numEntries == 1) {
+        displayMainScreen.textContent = equationStack[0];
+    } else if (numEntries == 2) {
+        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
+        displayMainScreen.textContent = equationStack[0];
+    } else if (numEntries == 3) {
+        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
+        displayMainScreen.textContent = equationStack[2];
+    } else if (numEntries == 5) {
+        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1] + ' ' + equationStack[2] + ' ' + equationStack[3];
+        displayMainScreen.textContent = equationStack[4];
+    }
 }
 
 function makeInt(para) {
