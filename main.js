@@ -13,7 +13,7 @@ const operateList = ['+', '-', '*', '/'];
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
-        mainController(button.id);
+        mainController(makeInt(button.id));
     });
 });
 
@@ -31,7 +31,25 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
+    if (numberList.includes(para)) {
+        console.log("from within if statement" + " " + para)
+    } else if (operateList.includes(para)) {
+        console.log("from within else if statement" + " " + para)
+    } else if (para == '.') {
+        console.log("from within else if statement" + " " + para)
+    } else if (para == 'clear') {
+        console.log("from within else if statement" + " " + para)
+    } else if (para == 'delete') {
+        console.log("from within else if statement" + " " + para)
+    } else if (para == '+/-') {
+        console.log("from within else if statement" + " " + para)
+    } else {
+        console.log("from within else statement" + " " + para)
+    }
+}
 
+function makeInt(para) {
+    return parseInt(para);
 }
 
 // OLD CODE
