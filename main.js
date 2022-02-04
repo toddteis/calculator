@@ -10,6 +10,7 @@ const displayTopScreen = document.querySelector('.display-top')
 
 const numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const operateList = ['+', '-', '*', '/'];
+const equationStack = [];
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -32,24 +33,51 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 function mainController(para) {
     if (numberList.includes(para)) {
-        console.log("from within if statement" + " " + para)
+        numberController(para);
     } else if (operateList.includes(para)) {
-        console.log("from within else if statement" + " " + para)
+        operatorController(para);
     } else if (para == '.') {
-        console.log("from within else if statement" + " " + para)
+        decimalController(para);
     } else if (para == 'clear') {
-        console.log("from within else if statement" + " " + para)
+        clearController();
     } else if (para == 'delete') {
-        console.log("from within else if statement" + " " + para)
+        deleteController();
     } else if (para == '+/-') {
-        console.log("from within else if statement" + " " + para)
+        plusMinusController();
     } else {
-        console.log("from within else statement" + " " + para)
+        equalsController();
     }
 }
 
 function makeInt(para) {
     return parseInt(para);
+}
+
+function numberController(para) {
+    console.log("from within numberController" + " " + para)
+}
+
+function operatorController(para) {
+    console.log("from within operatorController" + " " + para)
+}
+
+function decimalController(para) {
+    console.log("from within decimalController" + " " + para)
+}
+
+function clearController() {
+    console.log("from within clearController")
+}
+function deleteController() {
+    console.log("from within deleteController")
+}
+
+function plusMinusController() {
+    console.log("from within plusMinusController")
+}
+
+function equalsController() {
+    console.log("from within equalsController")
 }
 
 // OLD CODE
