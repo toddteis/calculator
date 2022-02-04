@@ -83,7 +83,24 @@ function operatorController(para) {
 }
 
 function decimalController(para) {
-    console.log("from within decimalController" + " " + para)
+    let lastStr = equationStack[equationStack.length -1];
+    let hasDecimal = lastStr.includes('.');
+    console.log(hasDecimal);
+    if (!hasDecimal) {
+        if (equationStack.length == 0) {
+            equationStack.push(`0${para}`);
+            console.log(equationStack);
+        } else if (equationStack.length == 1) {
+            equationStack[0] = equationStack[0] + para;
+            console.log(equationStack);
+        } else if (equationStack.length == 2) {
+            equationStack.push(`0${para}`);
+            console.log(equationStack);
+        } else {
+            equationStack[2] = equationStack[2] + para;
+        }
+    }
+    console.log(equationStack);
 }
 
 function clearController() {
