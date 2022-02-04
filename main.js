@@ -10,7 +10,7 @@ const displayTopScreen = document.querySelector('.display-top')
 
 const numberList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operateList = ['+', '-', '*', '/'];
-const equationStack = [];
+let equationStack = [];
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -87,7 +87,7 @@ function decimalController(para) {
 }
 
 function clearController() {
-    console.log("from within clearController")
+    equationStack = [];
 }
 function deleteController() {
     console.log("from within deleteController")
