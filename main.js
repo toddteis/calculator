@@ -8,6 +8,8 @@ const buttonDecimal = document.querySelector('input.decimal');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
+const numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const operateList = ['+', '-', '*', '/'];
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -29,7 +31,7 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
-    console.log('hi from inside mainController:' + '' + para);
+
 }
 
 // OLD CODE
