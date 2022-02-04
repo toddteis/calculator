@@ -8,13 +8,13 @@ const buttonDecimal = document.querySelector('input.decimal');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
-const numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const numberList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operateList = ['+', '-', '*', '/'];
 const equationStack = [];
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
-        mainController(makeInt(button.id));
+        mainController(button.id);
     });
 });
 
@@ -54,11 +54,32 @@ function makeInt(para) {
 }
 
 function numberController(para) {
-    console.log("from within numberController" + " " + para)
+    if (equationStack.length == 0) {
+        equationStack.push(para);
+    } else if (equationStack.length == 1) {
+        equationStack[0] = equationStack[0] + para;
+    }  else if (equationStack.length == 2){
+        // add logic when two entries are found in the equationStack to add three entry(second number)
+        equationStack[2] = para;
+        console.log(equationStack);
+    } else {
+        equationStack[2] = equationStack[2] + para;
+        console.log(equationStack);
+    }
 }
 
 function operatorController(para) {
-    console.log("from within operatorController" + " " + para)
+    if (equationStack.length == 0) {
+        equationStack.push('0', para);
+    } else if (equationStack.length == 1) {
+        equationStack.push(para);
+        console.log(equationStack)
+    } else if (equationStack.length == 2) {
+        equationStack[1] = para;
+        console.log(equationStack)
+    } else if (equationStack.length == 3) {
+        equationStack[3] = para;
+    }
 }
 
 function decimalController(para) {
