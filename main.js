@@ -11,6 +11,7 @@ const displayTopScreen = document.querySelector('.display-top')
 const numberList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operateList = ['+', '-', '*', '/'];
 let equationStack = [];
+let clearScreen = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -51,18 +52,24 @@ function mainController(para) {
 }
 
 function displayController() {
-    let numEntries = equationStack.length;
-    if (numEntries == 1) {
-        displayMainScreen.textContent = equationStack[0];
-    } else if (numEntries == 2) {
-        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
-        displayMainScreen.textContent = equationStack[0];
-    } else if (numEntries == 3) {
-        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
-        displayMainScreen.textContent = equationStack[2];
-    } else if (numEntries == 5) {
-        displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1] + ' ' + equationStack[2] + ' ' + equationStack[3];
-        displayMainScreen.textContent = equationStack[4];
+    if (clearScreen == true) {
+        displayTopScreen.textContent = '';
+        displayMainScreen.textContent = '';
+        clearScreen = false;
+    } else {
+        let numEntries = equationStack.length;
+        if (numEntries == 1) {
+            displayMainScreen.textContent = equationStack[0];
+        } else if (numEntries == 2) {
+            displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
+            displayMainScreen.textContent = equationStack[0];
+        } else if (numEntries == 3) {
+            displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1];
+            displayMainScreen.textContent = equationStack[2];
+        } else if (numEntries == 5) {
+            displayTopScreen.textContent = equationStack[0]+ ' ' + equationStack[1] + ' ' + equationStack[2] + ' ' + equationStack[3];
+            displayMainScreen.textContent = equationStack[4];
+        }
     }
 }
 
@@ -122,6 +129,8 @@ function decimalController(para) {
 
 function clearController() {
     equationStack = [];
+    clearScreen = true;
+    displayController();
 }
 function deleteController() {
     if (equationStack.length == 1) {
@@ -140,7 +149,7 @@ function plusMinusController() {
 }
 
 function equalsController() {
-    console.log("from within equalsController")
+    equationStack.push('=');
 }
 
 function operate(num1, oper, num2) {
