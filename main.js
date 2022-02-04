@@ -12,6 +12,7 @@ const numberList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operateList = ['+', '-', '*', '/'];
 let equationStack = [];
 let clearScreen = false;
+let equationFinished = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -33,6 +34,21 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
+    if(numberList.includes(para) && equationFinished == true) {
+        displayTopScreen.textContent = '';
+        displayMainScreen.textContent = '';
+        equationStack = [];
+        equationFinished = false;
+    } else if (operateList.includes(para) && equationFinished == true) {
+        let fifthEntry = equationStack[4];
+        equationStack = [];
+        displayTopScreen.textContent = '';
+        displayMainScreen.textContent = '';
+        equationFinished = false;
+        equationStack = [fifthEntry];
+        console.log(equationStack);
+    }
+    
     if (numberList.includes(para)) {
         numberController(para);
     } else if (operateList.includes(para)) {
@@ -57,6 +73,7 @@ function displayController() {
         displayMainScreen.textContent = '';
         clearScreen = false;
     } else {
+
         let numEntries = equationStack.length;
         if (numEntries == 1) {
             displayMainScreen.textContent = equationStack[0];
@@ -130,8 +147,8 @@ function decimalController(para) {
 function clearController() {
     equationStack = [];
     clearScreen = true;
-    displayController();
 }
+
 function deleteController() {
     if (equationStack.length == 1) {
         let str = equationStack[0];
@@ -150,9 +167,14 @@ function plusMinusController() {
 
 function equalsController() {
     equationStack.push('=');
+    equationStack.push(operate());
+    equationFinished = true;
 }
 
-function operate(num1, oper, num2) {
+function operate() {
+    let oper = equationStack[1];
+    let num1 = parseInt(equationStack[0]);
+    let num2 = parseInt(equationStack[2]);
     let result;
     if (oper == '+') {
         result = add(num1, num2);
