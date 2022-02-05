@@ -13,6 +13,7 @@ const operateList = ['+', '-', '*', '/'];
 let equationStack = [];
 let clearScreen = false;
 let equationFinished = false;
+let operatorUsed = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -34,19 +35,22 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
+    // if equals has been pressed "equationFinished" and 
+    // another number has been press to start another equation
     if(numberList.includes(para) && equationFinished == true) {
         displayTopScreen.textContent = '';
         displayMainScreen.textContent = '';
         equationStack = [];
         equationFinished = false;
     } else if (operateList.includes(para) && equationFinished == true) {
+        // if equals has been pressed "equationFinished" and
+        // an operator has been pressed to continue using the answer
         let fifthEntry = equationStack[4];
         equationStack = [];
         displayTopScreen.textContent = '';
         displayMainScreen.textContent = '';
         equationFinished = false;
         equationStack = [fifthEntry];
-        console.log(equationStack);
     }
     
     if (numberList.includes(para)) {
@@ -96,12 +100,9 @@ function numberController(para) {
     } else if (equationStack.length == 1) {
         equationStack[0] = equationStack[0] + para;
     }  else if (equationStack.length == 2){
-        // add logic when two entries are found in the equationStack to add three entry(second number)
         equationStack[2] = para;
-        console.log(equationStack);
     } else {
         equationStack[2] = equationStack[2] + para;
-        console.log(equationStack);
     }
 }
 
@@ -110,50 +111,47 @@ function operatorController(para) {
         equationStack.push('0', para);
     } else if (equationStack.length == 1) {
         equationStack.push(para);
-        console.log(equationStack)
     } else if (equationStack.length == 2) {
         equationStack[1] = para;
-        console.log(equationStack)
     } else if (equationStack.length == 3) {
-        equationStack[3] = para;
+        // equationStack should have N# Opr N# eg. 2 + 3 with para: *
+        // need to resolve this equation before adding the new oper.
+        // to the equationStack eg. 5 * 5
+        let getAns = operate();
+        equationStack = [];
+        equationStack.push(getAns, para);
     }
 }
 
 function decimalController(para) {
     let lastStr = equationStack[equationStack.length -1];
     let hasDecimal = lastStr.includes('.');
-    console.log(hasDecimal);
     if (!hasDecimal) {
         if (equationStack.length == 0) {
             equationStack.push(`0${para}`);
-            console.log(equationStack);
         } else if (equationStack.length == 1) {
             equationStack[0] = equationStack[0] + para;
-            console.log(equationStack);
         } else if (equationStack.length == 2) {
             equationStack.push(`0${para}`);
-            console.log(equationStack);
         } else {
             equationStack[2] = equationStack[2] + para;
         }
     }
-    console.log(equationStack);
 }
 
 function clearController() {
     equationStack = [];
     clearScreen = true;
+    operatorUsed = false;
 }
 
 function deleteController() {
     if (equationStack.length == 1) {
         let str = equationStack[0];
         equationStack[0] = str.substring(0, str.length -1);
-        console.log(equationStack)
     } else if (equationStack.length == 3) {
         let str = equationStack[2];
         equationStack[2] = str.substring(0, str.length -1);
-        console.log(equationStack)
     }
 }
 
