@@ -18,7 +18,7 @@ html {
     margin-top: 40px;
     display: grid;
     grid-template-columns: auto 65px 65px 65px 65px auto;
-    grid-template-rows: 65px 65px 65px 65px 65px 65px 65px;
+    grid-template-rows: 35px 65px 65px 65px 65px 65px 65px;
     grid-template-areas: 
         'sdl a a a a sdr'
         'sdl b b b b sdr'
@@ -28,6 +28,8 @@ html {
         'sdl m n o p sdr'
         'sdl q r s t sdr'
         ;
+    column-gap: 5px;
+    row-gap: 5px;
 }
 
 .calculator input {
@@ -36,8 +38,25 @@ html {
     font-size: 16px;
 }
 
-.display-top {grid-area: a;}
-.display-main {grid-area: b;}
+.display {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    align-content: center;
+    border: 2px solid grey;
+    border-radius: 4px;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.display-top {
+    grid-area: a;
+    font-size: 18px;
+}
+.display-main {
+    grid-area: b;
+    font-size: 44px;
+}
 .clear {grid-area: c;}
 .delete {grid-area: d;}
 .plus-minus {grid-area: u;}
