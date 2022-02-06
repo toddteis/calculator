@@ -34,18 +34,16 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
-    // check for character limit of 10
+    // check for character limit of 12
     if (numberList.includes(para) || para == '.') {
         if (equationStack.length == 1) {
             let str = equationStack[0].length;
-            if ( str == 10) {
-                console.log('max number');
+            if ( str == 12) {
                 return null;
             }
         } else if (equationStack.length == 3) {
             let str = equationStack[2].length;
-            if ( str == 10) {
-                console.log('max number');
+            if ( str == 12) {
                 return null;
             }
         }

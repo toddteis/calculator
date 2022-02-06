@@ -24,11 +24,11 @@ html {
     background-color: var(--grey-med-light);
 }
 
+/* MAIN SECTION */
+
 .calculator {
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
-    /* align-content: center; */
 }
 
 .case {
