@@ -15,6 +15,14 @@ html {
 }
 
 .calculator {
+    display: flex;
+    justify-content: center;
+}
+
+.case {
+    align-self: center;
+    justify-self: center;
+    padding: 15px;
     margin-top: 40px;
     display: grid;
     grid-template-columns: auto 65px 65px 65px 65px auto;
@@ -30,6 +38,8 @@ html {
         ;
     column-gap: 5px;
     row-gap: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
 }
 
 .calculator input {
@@ -45,7 +55,7 @@ html {
     align-content: center;
     border: 2px solid grey;
     border-radius: 4px;
-    padding: 4px;
+    padding: 0px 15px;
     overflow: hidden;
 }
 
