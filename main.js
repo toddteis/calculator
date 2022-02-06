@@ -34,6 +34,22 @@ buttonDecimal.addEventListener('click', () => { mainController(buttonDecimal.id)
 
 
 function mainController(para) {
+    // check for character limit of 10
+    if (numberList.includes(para) || para == '.') {
+        if (equationStack.length == 1) {
+            let str = equationStack[0].length;
+            if ( str == 10) {
+                console.log('max number');
+                return null;
+            }
+        } else if (equationStack.length == 3) {
+            let str = equationStack[2].length;
+            if ( str == 10) {
+                console.log('max number');
+                return null;
+            }
+        }
+    }
     // if equals has been pressed "equationFinished" and 
     // another number has been press to start another equation
     if(numberList.includes(para) && equationFinished == true) {
