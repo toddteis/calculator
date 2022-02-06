@@ -13,7 +13,7 @@
     --grey-med-light: #eee;
     --grey-medium: #e0e0e0;
     --grey-medium-dark: #bdbdbd;
-    --dark: #9e9e9e;
+    --dark: #757575;
     --green-light: #c5e1a5;
 }
 
@@ -21,6 +21,7 @@ html {
     box-sizing: border-box;
     font-size: 16px;
     font-family: 'Mukta', sans-serif;
+    background-color: var(--grey-med-light);
 }
 
 .calculator {
@@ -47,14 +48,36 @@ html {
         ;
     column-gap: 5px;
     row-gap: 5px;
-    border: 2px solid black;
-    border-radius: 5px;
+    border: 2px solid var(--dark);
+    border-radius: 12px;
+    background-color: var(--grey-medium);
 }
 
-.calculator input {
+ button {
     font-family: 'Mukta', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 24px;
+    border: 1px solid var(--dark);
+    border-radius: 8px;
+    background-color: var(--grey-med-light);
+    /* transition: color 5s, transform 5s, background-color 5s; */
+}
+
+button:hover {
+    font-size: 28px;
+    border: 1px solid var(--grey-med-light);
+    border-radius: 8px;
+    background-color: black;
+    /* transition: color 5s, transform 5s, background-color 5s; */
+}
+
+.calculator input:hover {
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    border: 1px solid var(--dark);
+    border-radius: 8px;
+    background-color: var(--grey-dark);
 }
 
 .display {
@@ -62,8 +85,9 @@ html {
     justify-content: right;
     align-items: center;
     align-content: center;
-    border: 2px solid grey;
-    border-radius: 3px;
+    border: 2px solid var(--dark);
+    background-color: var(--white);
+    border-radius: 8px;
     padding: 0px 15px;
     overflow: hidden;
 }
@@ -95,7 +119,6 @@ html {
 .decimal {grid-area: r;}
 .equals {grid-area: s;}
 .divide {grid-area: t;}
-
 
 /* FOOTER SECTION */
 

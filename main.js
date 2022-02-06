@@ -1,10 +1,10 @@
-const buttonsNumber = document.querySelectorAll('input.number');
-const buttonsOperator = document.querySelectorAll('input.operator');
-const buttonClear = document.querySelector('input.clear');
-const buttonDelete = document.querySelector('input.delete');
-const buttonPlusMinus = document.querySelector('input.plus-minus');
-const buttonEqual = document.querySelector('input.equals');
-const buttonDecimal = document.querySelector('input.decimal');
+const buttonsNumber = document.querySelectorAll('button.number');
+const buttonsOperator = document.querySelectorAll('button.operator');
+const buttonClear = document.querySelector('button.clear');
+const buttonDelete = document.querySelector('button.delete');
+const buttonPlusMinus = document.querySelector('button.plus-minus');
+const buttonEqual = document.querySelector('button.equals');
+const buttonDecimal = document.querySelector('button.decimal');
 const displayMainScreen = document.querySelector('.display-main')
 const displayTopScreen = document.querySelector('.display-top')
 
