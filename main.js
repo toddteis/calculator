@@ -13,7 +13,6 @@ const operateList = ['+', '-', '*', '/'];
 let equationStack = [];
 let clearScreen = false;
 let equationFinished = false;
-let operatorUsed = false;
 
 buttonsNumber.forEach((button) => {
     button.addEventListener('click', () => {
@@ -142,7 +141,6 @@ function decimalController(para) {
 function clearController() {
     equationStack = [];
     clearScreen = true;
-    operatorUsed = false;
 }
 
 function deleteController() {
@@ -156,7 +154,17 @@ function deleteController() {
 }
 
 function plusMinusController() {
-    console.log("from within plusMinusController")
+    // check how long equationStack is.
+    // if 1 entries or 3 entries, grab number and put + or -
+    if(equationStack.length == 1) {
+        let num = Number(equationStack[0]);
+        equationStack[0] = (num > 0 ) ? num * -1 : "+" + (num * -1);
+    } else if (equationStack.length == 3) {
+        let num = Number(equationStack[2]);
+        equationStack[2] = (num > 0 ) ? num * -1 : "+" + (num * -1);
+    } else {
+        // do nothing: +/- should not work
+    }
 }
 
 function equalsController() {
